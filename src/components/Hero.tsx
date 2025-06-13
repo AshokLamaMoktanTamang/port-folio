@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Tilt from "react-parallax-tilt";
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
 import avatar from "@/assets/images/me.jpeg";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
 
 const startDate = new Date("2022-09");
 const currentDate = new Date();
@@ -18,16 +16,6 @@ const yearsWithDecimal = monthsDiff / 12;
 const formattedExperience = Math.round(yearsWithDecimal * 10) / 10;
 
 const Hero: React.FC = () => {
-  const [init, setInit] = useState(false);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
-
   return (
     <section
       id="hero"
@@ -38,87 +26,12 @@ const Hero: React.FC = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "var(--color-background)",
         color: "var(--color-text)",
         textAlign: "center",
         overflow: "hidden",
         paddingTop: 80,
       }}
     >
-      {init && (
-        <Particles
-          id="tsparticles"
-          options={{
-            background: {
-              color: {
-                value: "transparent",
-              },
-            },
-            fpsLimit: 120,
-            interactivity: {
-              events: {
-                onClick: {
-                  enable: true,
-                  mode: "push",
-                },
-                onHover: {
-                  enable: true,
-                  mode: "repulse",
-                },
-                resize: true as any,
-              },
-              modes: {
-                push: {
-                  quantity: 4,
-                },
-                repulse: {
-                  distance: 300,
-                  duration: 0.4,
-                },
-              },
-            },
-            particles: {
-              color: {
-                value: "#ffffffff",
-              },
-              links: {
-                color: "#ffffffff",
-                distance: 150,
-                enable: true,
-                opacity: 0.3,
-                width: 1,
-              },
-              move: {
-                direction: "none",
-                enable: true,
-                outModes: {
-                  default: "bounce",
-                },
-                random: false,
-                speed: 1,
-                straight: false,
-              },
-              number: {
-                density: {
-                  enable: true,
-                  // area: 800,
-                },
-                value: 80,
-              },
-              opacity: {
-                value: 0.3,
-              },
-              shape: {
-                type: "circle",
-              },
-              size: {
-                value: { min: 1, max: 5 },
-              },
-            },
-            detectRetina: true,
-          }}
-        />
-      )}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -129,7 +42,7 @@ const Hero: React.FC = () => {
           borderRadius: "20px",
           background: "rgba(var(--color-surface-rgb), 0.7)",
           backdropFilter: "blur(10px)",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+          boxShadow: "0 8px 32px var(--color-highlight)",
           border: "1px solid rgba(var(--color-accent-rgb), 0.2)",
         }}
       >

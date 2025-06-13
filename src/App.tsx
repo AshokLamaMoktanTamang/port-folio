@@ -8,6 +8,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/ContactInfo";
 import Footer from "./components/Footer";
 import ProfessionalDevelopment from "./components/ProfessionalDevelopment";
+import ThreeBackground from "./components/ThreeBackground";
 
 function App() {
   // Track active section on scroll
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <>
+      <ThreeBackground />
       <Header activeSection={activeSection} />
       <main>
         <Hero />

@@ -86,7 +86,7 @@ const Experience: React.FC = () => {
               backgroundColor: "var(--color-surface)",
               padding: "1rem 1.25rem",
               borderRadius: 10,
-              boxShadow: "0 0 15px var(--color-accent)",
+              border: "1px solid var(--color-accent)",
             }}
           >
             <h3 className="glow-accent" style={{ marginBottom: 4 }}>

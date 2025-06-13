@@ -22,7 +22,7 @@ const ProfessionalDevelopment: React.FC = () => {
             backgroundColor: "var(--color-surface)",
             padding: "1.5rem",
             borderRadius: 12,
-            boxShadow: "0 0 15px var(--color-accent)",
+            border: "1px solid var(--color-accent)",
           }}
         >
           <h3 style={{ marginBottom: 8, fontWeight: "bold" }}>
