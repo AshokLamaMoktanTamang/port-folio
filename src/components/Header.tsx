@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
         position: "fixed",
         width: "100%",
         top: 0,
-        zIndex: 100,
+        zIndex: 9999,
         backdropFilter: "blur(8px)",
       }}
     >

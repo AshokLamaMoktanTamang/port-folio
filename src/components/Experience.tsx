@@ -109,7 +109,7 @@ const Experience: React.FC = () => {
               }}
             >
               {details.map((item, idx) => (
-                <li key={idx} style={{ marginBottom: 6 }}>
+                <li key={idx} style={{ marginBottom: 16 }}>
                   {item}
                 </li>
               ))}
