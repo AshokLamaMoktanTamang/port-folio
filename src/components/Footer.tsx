@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       style={{
         position: "relative",
         marginTop: 60,
-        padding: "2rem 1rem",
+        padding: "0 1rem",
         backgroundColor: "var(--color-surface)",
         color: "var(--color-muted)",
         textAlign: "center",
