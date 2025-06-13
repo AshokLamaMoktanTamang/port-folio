@@ -72,20 +72,20 @@ const Hero: React.FC = () => {
                   quantity: 4,
                 },
                 repulse: {
-                  distance: 200,
+                  distance: 300,
                   duration: 0.4,
                 },
               },
             },
             particles: {
               color: {
-                value: "#ffffff",
+                value: "#ffffffff",
               },
               links: {
-                color: "#ffffff",
+                color: "#ffffffff",
                 distance: 150,
                 enable: true,
-                opacity: 0.5,
+                opacity: 0.3,
                 width: 1,
               },
               move: {
@@ -106,7 +106,7 @@ const Hero: React.FC = () => {
                 value: 80,
               },
               opacity: {
-                value: 0.5,
+                value: 0.3,
               },
               shape: {
                 type: "circle",
@@ -194,6 +194,7 @@ const Hero: React.FC = () => {
         >
           <a
             download={"./Ashok_Lama.pdf"}
+            href={"./Ashok_Lama.pdf"}
             target="_blank"
             style={{
               color: "var(--color-accent)",
