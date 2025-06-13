@@ -1,10 +1,11 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
 const skillSections = [
   {
     title: "Programming Languages",
+    icon: "💻",
     items: [
       "JavaScript",
       "TypeScript",
@@ -17,6 +18,7 @@ const skillSections = [
   },
   {
     title: "Frontend Technologies",
+    icon: "🎨",
     items: [
       "React.js",
       "Redux",
@@ -32,6 +34,7 @@ const skillSections = [
   },
   {
     title: "Backend Technologies",
+    icon: "⚙️",
     items: [
       "Node.js",
       "Express.js",
@@ -46,84 +49,134 @@ const skillSections = [
   },
   {
     title: "AI Tools",
+    icon: "🧠",
     items: ["OpenAI Whisper"],
   },
   {
     title: "API and Web Services",
+    icon: "🔗",
     items: ["RESTful APIs", "GraphQL", "gRPC"],
   },
   {
     title: "Version Control",
+    icon: "🔄",
     items: ["Git", "GitHub", "GitLab"],
   },
   {
     title: "Databases",
+    icon: "🗄️",
     items: ["MySQL", "MongoDB", "PostgreSQL"],
   },
   {
     title: "Tools and Technologies",
+    icon: "🛠️",
     items: ["Git", "Postman", "Figma", "Docker", "Linux", "Redis"],
   },
   {
     title: "Operating Systems",
+    icon: "💾",
     items: ["Windows", "Linux", "MacOS"],
   },
   {
     title: "Testing and QA",
+    icon: "🧪",
     items: ["Jest", "Cypress", "K6", "Lighthouse"],
   },
   {
-    title: "Project Management & Collaboration",
+    title: "Project Management",
+    icon: "📊",
     items: ["Jira", "Trello", "Slack", "Google Chat"],
   },
 ];
 
 const containerVariants = {
   visible: {
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.3 },
   },
   hidden: {},
 };
 
-const itemVariants = {
-  visible: { opacity: 1, y: 0 },
+const sectionVariants: Variants = {
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100 },
+  },
   hidden: { opacity: 0, y: 20 },
+};
+
+const skillVariants: Variants = {
+  hover: {
+    scale: 1.05,
+    boxShadow: "0 0 15px var(--color-accent)",
+    y: -3,
+    transition: { type: "spring", stiffness: 400, damping: 10 },
+  },
+  rest: { scale: 1 },
 };
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" style={{ padding: "2rem 1rem", margin: "0 auto" }}>
-      <h2 className="glow-accent" style={{ marginBottom: 32 }}>
+    <section
+      id="skills"
+      style={{
+        margin: "0 auto",
+      }}
+    >
+      <h2 className="glow-accent" style={{ marginBottom: "2rem" }}>
         Skills
       </h2>
 
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
+          gap: "2rem",
+        }}
       >
-        {skillSections.map(({ title, items }) => (
+        {skillSections.map(({ title, items, icon }) => (
           <motion.div
             key={title}
-            variants={itemVariants}
+            variants={sectionVariants}
             style={{
-              marginBottom: 32,
-              padding: "1rem",
-              borderRadius: 12,
-              backgroundColor: "var(--color-surface)",
-              boxShadow: "0 0 15px var(--color-accent)",
+              padding: "1.5rem",
+              borderRadius: "16px",
+              background: "var(--color-surface)",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(5px)",
             }}
+            whileHover={{ y: -5 }}
           >
-            <h3 className="glow-accent" style={{ marginBottom: 16 }}>
-              {title}
-            </h3>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.8rem",
+                marginBottom: "1.5rem",
+              }}
+            >
+              <span style={{ fontSize: "1.8rem" }}>{icon}</span>
+              <h3
+                style={{
+                  margin: 0,
+                  fontSize: "1.3rem",
+                  fontWeight: 600,
+                  color: "var(--color-accent)",
+                }}
+              >
+                {title}
+              </h3>
+            </div>
             <div
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: 12,
-                justifyContent: "flex-start",
+                gap: "0.8rem",
               }}
             >
               {items.map((skill) => (
@@ -132,24 +185,33 @@ const Skills: React.FC = () => {
                   glareEnable
                   glareColor="var(--color-accent)"
                   glareMaxOpacity={0.2}
-                  scale={1.05}
-                  transitionSpeed={250}
-                  style={{
-                    minWidth: 110,
-                    backgroundColor: "var(--color-background)",
-                    padding: "0.5rem 1rem",
-                    borderRadius: 8,
-                    boxShadow: "0 0 8px var(--color-accent)",
-                    textAlign: "center",
-                    userSelect: "none",
-                    cursor: "default",
-                    fontWeight: 600,
-                    color: "var(--color-text)",
-                    fontSize: "0.9rem",
-                    whiteSpace: "nowrap",
-                  }}
+                  glarePosition="all"
+                  scale={1.02}
+                  transitionSpeed={2000}
+                  tiltMaxAngleX={5}
+                  tiltMaxAngleY={5}
                 >
-                  {skill}
+                  <motion.div
+                    variants={skillVariants}
+                    initial="rest"
+                    whileHover="hover"
+                    style={{
+                      backgroundColor: "var(--color-background)",
+                      padding: "0.5rem 1rem",
+                      borderRadius: "50px",
+                      textAlign: "center",
+                      userSelect: "none",
+                      cursor: "default",
+                      fontWeight: 500,
+                      color: "var(--color-text)",
+                      fontSize: "0.9rem",
+                      whiteSpace: "nowrap",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+                    }}
+                  >
+                    {skill}
+                  </motion.div>
                 </Tilt>
               ))}
             </div>

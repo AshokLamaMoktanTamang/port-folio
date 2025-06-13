@@ -24,7 +24,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Set initial value
     handleResize();
 
     window.addEventListener("resize", handleResize);
@@ -119,6 +118,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                     gap: "1rem",
                     fontSize: "0.9rem",
                     fontWeight: 500,
+                    listStyle: "none",
                   }}
                 >
                   {navLinks.map(({ href, label }) => (
@@ -155,6 +155,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               gap: "1.5rem",
               fontSize: "0.9rem",
               fontWeight: 500,
+              listStyle: "none",
             }}
           >
             {navLinks.map(({ href, label }) => (
