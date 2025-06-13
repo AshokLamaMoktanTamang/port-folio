@@ -106,28 +106,59 @@ const Hero: React.FC = () => {
             }}
           />
         </motion.div>
-        <motion.div
-          style={{ minHeight: "2.5rem" }}
-          whileHover={{ scale: 1.05 }}
+
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            justifyContent: "center",
+            marginTop: "1rem",
+          }}
         >
-          <a
-            download={"./Ashok_Lama.pdf"}
-            href={"./Ashok_Lama.pdf"}
-            target="_blank"
-            style={{
-              color: "var(--color-accent)",
-              borderBottom: "2px solid var(--color-accent)",
-              paddingBottom: "2px",
-              display: "block",
-              width: "fit-content",
-              margin: "auto",
-              cursor: "pointer",
-            }}
-            className="nav-link"
+          <motion.div
+            style={{ minHeight: "2.5rem" }}
+            whileHover={{ scale: 1.05 }}
           >
-            Download CV
-          </a>
-        </motion.div>
+            <a
+              download={"./Ashok_Lama.pdf"}
+              href={"./Ashok_Lama.pdf"}
+              target="_blank"
+              style={{
+                color: "var(--color-accent)",
+                borderBottom: "2px solid var(--color-accent)",
+                paddingBottom: "2px",
+                display: "block",
+                width: "fit-content",
+                margin: "auto",
+                cursor: "pointer",
+              }}
+              className="nav-link"
+            >
+              Download CV
+            </a>
+          </motion.div>
+          <motion.div
+            style={{ minHeight: "2.5rem" }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <a
+              href={"./Ashok_Lama.pdf"}
+              target="_blank"
+              style={{
+                color: "var(--color-accent)",
+                borderBottom: "2px solid var(--color-accent)",
+                paddingBottom: "2px",
+                display: "block",
+                width: "fit-content",
+                margin: "auto",
+                cursor: "pointer",
+              }}
+              className="nav-link"
+            >
+              View CV
+            </a>
+          </motion.div>
+        </div>
       </motion.div>
 
       <motion.div
