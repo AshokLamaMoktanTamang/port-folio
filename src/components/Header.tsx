@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import avatar from "@/assets/images/me.jpeg";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 interface HeaderProps {
   activeSection: string;
@@ -48,8 +49,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
     >
       <nav
         style={{
-          maxWidth: 900,
-          margin: "0 auto",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -156,6 +155,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               fontSize: "0.9rem",
               fontWeight: 500,
               listStyle: "none",
+              alignItems: "center",
             }}
           >
             {navLinks.map(({ href, label }) => (
@@ -179,6 +179,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                 </a>
               </li>
             ))}
+            <ThemeSwitcher />
           </ul>
         )}
       </nav>

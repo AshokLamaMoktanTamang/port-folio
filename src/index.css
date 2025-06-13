@@ -9,6 +9,15 @@
   scroll-behavior: smooth;
 }
 
+.light {
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #222222;
+  --color-accent: #d97706;
+  --color-muted: #6b7280;
+  --color-highlight: #facc15;
+}
+
 body {
   margin: 0;
   background-color: var(--color-background);
@@ -27,7 +36,7 @@ a:hover {
 }
 
 .glow-accent {
-  color: var(--color-surface);
+  color: var(--color-text);
   text-shadow:
     0 0 2px var(--color-highlight),
     0 0 0px var(--color-highlight),
