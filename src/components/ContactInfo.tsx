@@ -27,15 +27,17 @@ const Contact: React.FC = () => {
             moktashok@gmail.com
           </a>
         </p>
-        <p
+        <a
+          href="tel:+9779840708606"
           style={{
             color: "var(--color-accent)",
             fontWeight: "600",
             textDecoration: "underline",
+            textDecorationThickness: "2px",
           }}
         >
           +977 9840708606
-        </p>
+        </a>
         <div
           style={{
             marginTop: 20,
