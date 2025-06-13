@@ -90,6 +90,8 @@ li:not(:has(a)) {
   opacity: 0.2;
   filter: brightness(0.2);
   padding: 2rem;
+  object-fit: contain;
+  object-position: center;
 }
 
 .project-thumbnail-pill{
