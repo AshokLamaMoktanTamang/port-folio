@@ -57,3 +57,16 @@ li:not(:has(a)) {
   margin-bottom: 1rem;
   margin-left: 1rem;
 }
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 470px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}

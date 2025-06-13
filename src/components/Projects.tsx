@@ -157,12 +157,7 @@ const Projects: React.FC = () => {
           visible: { transition: { staggerChildren: 0.2 } },
           hidden: {},
         }}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-          gap: "1.5rem",
-          marginTop: "1rem",
-        }}
+        className="gridContainer"
       >
         {projects
           .filter((p) => p.type === "professional")
@@ -326,12 +321,7 @@ const Projects: React.FC = () => {
           visible: { transition: { staggerChildren: 0.2 } },
           hidden: {},
         }}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-          gap: "1.5rem",
-          marginTop: "1rem",
-        }}
+        className="gridContainer"
       >
         {projects
           .filter((p) => p.type === "package")
