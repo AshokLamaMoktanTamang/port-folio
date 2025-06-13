@@ -79,3 +79,21 @@ li:not(:has(a)) {
     grid-template-columns: 1fr;
   }
 }
+
+.project-thumbnail {
+  position: absolute;
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.2;
+  filter: brightness(0.2);
+  padding: 2rem;
+}
+
+.project-thumbnail-pill{
+  height: 40px;
+  width: 40px;
+  flex-shrink: 0;
+}

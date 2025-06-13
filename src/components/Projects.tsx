@@ -23,6 +23,36 @@ const projects = [
     ],
     url: "https://sifu.kungfuquiz.com/",
     type: "professional",
+    image: "/images/kungfu.svg",
+  },
+  {
+    title: "My Second Teacher",
+    description:
+      "An award-winning e-learning platform offering interactive video lessons, eBooks, and academic support to students across 51 countries. It serves as a comprehensive digital classroom that enhances learning through technology.",
+    features: [
+      "Interactive Videos",
+      "Ebook, classroom, Testpapers and chat features",
+      "Teacher, student, parent and leader portals",
+    ],
+    technologies: ["React", "Bootstrap"],
+    url: "https://www.mysecondteacher.com/",
+    type: "professional",
+    image: "/images/mst.png",
+  },
+  {
+    title: "Home School Asia",
+    description:
+      "Scalable e-learning platform with comprehensive course management",
+    features: [
+      "Interactive Video classroom functionality",
+      "Interactive test and assessment system",
+      "Secure session management",
+      "Progress tracking and reporting",
+    ],
+    technologies: ["React", "Bootstrap"],
+    url: "https://www.homeschool.asia/",
+    type: "professional",
+    image: "/images/hsa.svg",
   },
   {
     title: "IVY Backoffice",
@@ -45,6 +75,7 @@ const projects = [
     ],
     url: "https://ivy.advancedpedagogy.com/login",
     type: "professional",
+    image: "/images/ivy.png",
   },
   {
     title: "IVY Player",
@@ -58,20 +89,7 @@ const projects = [
     ],
     technologies: ["React", "React Player", "Http Live Streaming", "Mux"],
     type: "professional",
-  },
-  {
-    title: "Home School Asia",
-    description:
-      "Scalable e-learning platform with comprehensive course management",
-    features: [
-      "Interactive Video classroom functionality",
-      "Interactive test and assessment system",
-      "Secure session management",
-      "Progress tracking and reporting",
-    ],
-    technologies: ["React", "Bootstrap"],
-    url: "https://www.homeschool.asia/",
-    type: "professional",
+    image: "/images/ivy.png",
   },
   {
     title: "@ashoklama/statepilot",
@@ -161,7 +179,7 @@ const Projects: React.FC = () => {
       >
         {projects
           .filter((p) => p.type === "professional")
-          .map(({ title, description, url, features, technologies }) => (
+          .map(({ title, description, url, features, technologies, image }) => (
             <Tilt
               glareEnable
               glareMaxOpacity={0.1}
@@ -182,8 +200,17 @@ const Projects: React.FC = () => {
                   boxShadow: "0 4px 20px rgba(var(--color-accent-rgb), 0.1)",
                   color: "var(--color-text)",
                   height: "calc(100% - 3rem)",
+                  position: "relative",
+                  zIndex: 1,
                 }}
               >
+                {image && (
+                  <img
+                    src={image}
+                    alt={`${title} screenshot`}
+                    className="project-thumbnail"
+                  />
+                )}
                 <div
                   style={{
                     height: "100%",
@@ -196,9 +223,20 @@ const Projects: React.FC = () => {
                       marginBottom: "0.75rem",
                       fontSize: "1.25rem",
                       color: "var(--color-accent)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
                     }}
                   >
-                    {title}
+                    <span>{title}</span>
+
+                    {image && (
+                      <img
+                        src={image}
+                        alt={`${title} screenshot`}
+                        className="project-thumbnail-pill"
+                      />
+                    )}
                   </h3>
 
                   <p
