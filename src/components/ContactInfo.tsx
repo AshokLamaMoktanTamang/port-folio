@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
         </p>
         <p>
           <a
-            href="mailto:ashoklama@example.com"
+            href="mailto:moktashok@gmail.com"
             style={{
               color: "var(--color-accent)",
               fontWeight: "600",
