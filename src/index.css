@@ -2,9 +2,9 @@
   --color-background: #121212;
   --color-surface: #1E1E1E;
   --color-text: #E0E0E0;
-  --color-accent: #F5F5DC;
+  --color-accent: #fad691;
   --color-muted: #9E9E9E;
-  --color-highlight: #FFD700;
+  --color-highlight: #f4bd57;
 
   scroll-behavior: smooth;
 }
@@ -27,7 +27,7 @@ a:hover {
 }
 
 .glow-accent {
-  color: var(--color-background);
+  color: var(--color-surface);
   text-shadow:
     0 0 2px var(--color-highlight),
     0 0 0px var(--color-highlight),

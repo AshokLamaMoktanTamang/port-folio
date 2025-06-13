@@ -1,24 +1,17 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import { skillIcons, categoryIcons } from "./icons";
 
 const skillSections = [
   {
     title: "Programming Languages",
-    icon: "💻",
-    items: [
-      "JavaScript",
-      "TypeScript",
-      "SQL",
-      "HTML/CSS",
-      "C#",
-      "Java",
-      "Python",
-    ],
+    iconKey: "Programming Languages",
+    items: ["JavaScript", "TypeScript", "SQL", "HTML", "CSS", "C#", "Java", "Python"],
   },
   {
     title: "Frontend Technologies",
-    icon: "🎨",
+    iconKey: "Frontend",
     items: [
       "React.js",
       "Redux",
@@ -34,7 +27,7 @@ const skillSections = [
   },
   {
     title: "Backend Technologies",
-    icon: "⚙️",
+    iconKey: "Backend",
     items: [
       "Node.js",
       "Express.js",
@@ -49,42 +42,42 @@ const skillSections = [
   },
   {
     title: "AI Tools",
-    icon: "🧠",
+    iconKey: "AI",
     items: ["OpenAI Whisper"],
   },
   {
     title: "API and Web Services",
-    icon: "🔗",
+    iconKey: "API",
     items: ["RESTful APIs", "GraphQL", "gRPC"],
   },
   {
     title: "Version Control",
-    icon: "🔄",
+    iconKey: "Version Control",
     items: ["Git", "GitHub", "GitLab"],
   },
   {
     title: "Databases",
-    icon: "🗄️",
+    iconKey: "Database",
     items: ["MySQL", "MongoDB", "PostgreSQL"],
   },
   {
     title: "Tools and Technologies",
-    icon: "🛠️",
+    iconKey: "Tools",
     items: ["Git", "Postman", "Figma", "Docker", "Linux", "Redis"],
   },
   {
     title: "Operating Systems",
-    icon: "💾",
+    iconKey: "OS",
     items: ["Windows", "Linux", "MacOS"],
   },
   {
     title: "Testing and QA",
-    icon: "🧪",
+    iconKey: "Testing",
     items: ["Jest", "Cypress", "K6", "Lighthouse"],
   },
   {
     title: "Project Management",
-    icon: "📊",
+    iconKey: "PM",
     items: ["Jira", "Trello", "Slack", "Google Chat"],
   },
 ];
@@ -117,12 +110,7 @@ const skillVariants: Variants = {
 
 const Skills: React.FC = () => {
   return (
-    <section
-      id="skills"
-      style={{
-        margin: "0 auto",
-      }}
-    >
+    <section id="skills" style={{ margin: "0 auto" }}>
       <h2 className="glow-accent" style={{ marginBottom: "2rem" }}>
         Skills
       </h2>
@@ -138,7 +126,7 @@ const Skills: React.FC = () => {
           gap: "2rem",
         }}
       >
-        {skillSections.map(({ title, items, icon }) => (
+        {skillSections.map(({ title, items, iconKey }) => (
           <motion.div
             key={title}
             variants={sectionVariants}
@@ -160,7 +148,9 @@ const Skills: React.FC = () => {
                 marginBottom: "1.5rem",
               }}
             >
-              <span style={{ fontSize: "1.8rem" }}>{icon}</span>
+              <span style={{ fontSize: "1.8rem", color: "var(--color-accent)" }}>
+                {categoryIcons[iconKey] || "🛠️"}
+              </span>
               <h3
                 style={{
                   margin: 0,
@@ -199,6 +189,9 @@ const Skills: React.FC = () => {
                       backgroundColor: "var(--color-background)",
                       padding: "0.5rem 1rem",
                       borderRadius: "50px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.4rem",
                       textAlign: "center",
                       userSelect: "none",
                       cursor: "default",
@@ -210,7 +203,7 @@ const Skills: React.FC = () => {
                       boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
                     }}
                   >
-                    {skill}
+                    {skillIcons[skill] || "🔧"} <span>{skill}</span>
                   </motion.div>
                 </Tilt>
               ))}
