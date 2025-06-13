@@ -161,7 +161,6 @@ const Hero: React.FC = () => {
           style={{
             fontSize: "3.5rem",
             marginBottom: "0.5rem",
-            textShadow: "0 0 10px rgba(var(--color-accent-rgb), 0.5)",
           }}
           whileHover={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}

@@ -4,6 +4,27 @@ import Tilt from "react-parallax-tilt";
 
 const projects = [
   {
+    title: "Kung Fu Quiz",
+    description: "Advanced quiz platform with real-time interaction features",
+    features: [
+      "Real-time scoring and feedback",
+      "Secure payment integration",
+      "Room for quizes",
+      "Multiple mode quizes",
+    ],
+    technologies: [
+      "React",
+      "Socket.io",
+      "Stripe API",
+      "Bootstrap",
+      "Paypal",
+      "Nodejs",
+      "Nestjs",
+    ],
+    url: "https://sifu.kungfuquiz.com/",
+    type: "professional",
+  },
+  {
     title: "IVY Backoffice",
     description:
       "Advanced administration system for managing interactive video content",
@@ -53,33 +74,6 @@ const projects = [
     type: "professional",
   },
   {
-    title: "Kung Fu Quiz",
-    description: "Advanced quiz platform with real-time interaction features",
-    features: [
-      "Real-time scoring and feedback",
-      "Secure payment integration",
-      "Room for quizes",
-      "Multiple mode quizes"
-    ],
-    technologies: ["React", "Socket.io", "Stripe API", "Bootstrap", "Paypal", "Nodejs", "Nestjs"],
-    url: "https://sifu.kungfuquiz.com/",
-    type: "professional",
-  },
-  {
-    title: "async-worker-queue-runner",
-    description: "High-performance asynchronous task processing library",
-    features: [
-      "Configurable concurrency control",
-      "Automatic retry with exponential backoff",
-      "Worker thread support for CPU-intensive tasks",
-      "Promise-based API",
-    ],
-    technologies: ["Node.js", "TypeScript", "Worker Threads"],
-    url: "https://www.npmjs.com/package/async-worker-queue-runner",
-    version: "v1.0.5",
-    type: "package",
-  },
-  {
     title: "@ashoklama/statepilot",
     description: "Modern state management solution for React applications",
     features: [
@@ -121,15 +115,26 @@ const projects = [
     version: "v0.0.0",
     type: "package",
   },
+  {
+    title: "async-worker-queue-runner",
+    description: "High-performance asynchronous task processing library",
+    features: [
+      "Configurable concurrency control",
+      "Automatic retry with exponential backoff",
+      "Worker thread support for CPU-intensive tasks",
+      "Promise-based API",
+    ],
+    technologies: ["Node.js", "TypeScript", "Worker Threads"],
+    url: "https://www.npmjs.com/package/async-worker-queue-runner",
+    version: "v1.0.5",
+    type: "package",
+  },
 ];
 
 const Projects: React.FC = () => {
   return (
     <section id="projects" style={{ margin: "0 auto" }}>
-      <h2
-        className="glow-accent"
-        style={{ marginBottom: "2rem" }}
-      >
+      <h2 className="glow-accent" style={{ marginBottom: "2rem" }}>
         Projects
       </h2>
 
@@ -139,7 +144,7 @@ const Projects: React.FC = () => {
           color: "var(--color-accent)",
           borderBottom: "1px solid var(--color-accent)",
           paddingBottom: "0.5rem",
-          textAlign: 'center'
+          textAlign: "center",
         }}
       >
         Professional Work
@@ -162,26 +167,27 @@ const Projects: React.FC = () => {
         {projects
           .filter((p) => p.type === "professional")
           .map(({ title, description, url, features, technologies }) => (
-            <motion.div
-              key={title}
-              variants={{
-                visible: { opacity: 1, y: 0 },
-                hidden: { opacity: 0, y: 30 },
-              }}
-              style={{
-                backgroundColor: "var(--color-surface)",
-                padding: "1.5rem",
-                borderRadius: "12px",
-                boxShadow: "0 4px 20px rgba(var(--color-accent-rgb), 0.1)",
-                color: "var(--color-text)",
-              }}
+            <Tilt
+              glareEnable
+              glareMaxOpacity={0.1}
+              glareColor="var(--color-accent)"
+              glarePosition="all"
+              scale={1.02}
             >
-              <Tilt
-                glareEnable
-                glareMaxOpacity={0.1}
-                glareColor="var(--color-accent)"
-                glarePosition="all"
-                scale={1.02}
+              <motion.div
+                key={title}
+                variants={{
+                  visible: { opacity: 1, y: 0 },
+                  hidden: { opacity: 0, y: 30 },
+                }}
+                style={{
+                  backgroundColor: "var(--color-surface)",
+                  padding: "1.5rem",
+                  borderRadius: "12px",
+                  boxShadow: "0 4px 20px rgba(var(--color-accent-rgb), 0.1)",
+                  color: "var(--color-text)",
+                  height: "calc(100% - 3rem)",
+                }}
               >
                 <div
                   style={{
@@ -286,14 +292,18 @@ const Projects: React.FC = () => {
                         color: "var(--color-accent)",
                         textDecoration: "none",
                         fontWeight: 500,
+                        width: "fit-content",
+                        padding: "0.5rem 1rem",
+                        border: "1px solid",
+                        borderRadius: "8px",
                       }}
                     >
                       View Project →
                     </a>
                   )}
                 </div>
-              </Tilt>
-            </motion.div>
+              </motion.div>
+            </Tilt>
           ))}
       </motion.div>
 
@@ -303,7 +313,7 @@ const Projects: React.FC = () => {
           color: "var(--color-accent)",
           borderBottom: "1px solid var(--color-accent)",
           paddingBottom: "0.5rem",
-          textAlign: 'center'
+          textAlign: "center",
         }}
       >
         Open Source Packages
@@ -327,26 +337,27 @@ const Projects: React.FC = () => {
           .filter((p) => p.type === "package")
           .map(
             ({ title, description, url, version, features, technologies }) => (
-              <motion.div
-                key={title}
-                variants={{
-                  visible: { opacity: 1, y: 0 },
-                  hidden: { opacity: 0, y: 30 },
-                }}
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  padding: "1.5rem",
-                  borderRadius: "12px",
-                  boxShadow: "0 4px 15px rgba(var(--color-accent-rgb), 0.05)",
-                  color: "var(--color-text)",
-                }}
+              <Tilt
+                glareEnable
+                glareMaxOpacity={0.05}
+                glareColor="var(--color-accent)"
+                glarePosition="all"
+                scale={1.01}
               >
-                <Tilt
-                  glareEnable
-                  glareMaxOpacity={0.05}
-                  glareColor="var(--color-accent)"
-                  glarePosition="all"
-                  scale={1.01}
+                <motion.div
+                  key={title}
+                  variants={{
+                    visible: { opacity: 1, y: 0 },
+                    hidden: { opacity: 0, y: 30 },
+                  }}
+                  style={{
+                    backgroundColor: "var(--color-surface)",
+                    padding: "1.5rem",
+                    borderRadius: "12px",
+                    boxShadow: "0 4px 15px rgba(var(--color-accent-rgb), 0.05)",
+                    color: "var(--color-text)",
+                    height: "calc(100% - 3rem)",
+                  }}
                 >
                   <div
                     style={{
@@ -475,14 +486,18 @@ const Projects: React.FC = () => {
                           color: "var(--color-accent)",
                           textDecoration: "none",
                           fontWeight: 500,
+                          width: "fit-content",
+                          padding: "0.5rem 1rem",
+                          border: "1px solid",
+                          borderRadius: "8px",
                         }}
                       >
                         View Package →
                       </a>
                     )}
                   </div>
-                </Tilt>
-              </motion.div>
+                </motion.div>
+              </Tilt>
             )
           )}
       </motion.div>
