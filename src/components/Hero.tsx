@@ -141,6 +141,12 @@ const Hero: React.FC = () => {
           glareMaxOpacity={0.3}
           scale={1.05}
           perspective={1000}
+          style={{
+            width: 180,
+            height: 180,
+            borderRadius: "50%",
+            margin: "auto",
+          }}
         >
           <img
             src={avatar}
