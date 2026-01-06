@@ -12,34 +12,17 @@ export default function ThemeSwitcher() {
     }
   }, [theme]);
 
-  const buttonStyle: React.CSSProperties = {
-    padding: "8px 16px",
-    borderRadius: 6,
-    backgroundColor: "var(--color-accent)",
-    color: "var(--color-background)",
-    fontWeight: "600",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    gap: 8,
-    transition: "background-color 0.3s ease",
-    border: "none",
-  };
-
-  const hoverStyle = {
-    backgroundColor: "var(--color-background)",
-    color: "var(--color-accent)",
-  };
-
-  const [hover, setHover] = useState(false);
+  // Initial theme check
+  useEffect(() => {
+    if (document.documentElement.classList.contains("light")) {
+      setTheme("light");
+    }
+  }, []);
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      style={{ ...buttonStyle, ...(hover ? hoverStyle : {}) }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className="px-4 py-2 rounded-md bg-accent text-white font-semibold shadow-md flex items-center gap-2 transition-all duration-300 hover:bg-highlight hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}

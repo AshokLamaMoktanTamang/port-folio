@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Tilt from "react-parallax-tilt";
 import avatar from "@/assets/images/me.jpeg";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -18,169 +17,135 @@ const navLinks = [
 
 const Header: React.FC<HeaderProps> = ({ activeSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
     };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
   return (
     <header
-      style={{
-        backgroundColor: "var(--color-surface)",
-        borderBottom: "1px solid var(--color-background)",
-        position: "fixed",
-        width: "100%",
-        top: 0,
-        zIndex: 9999,
-        backdropFilter: "blur(8px)",
-      }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-white/5 py-3 shadow-lg"
+          : "bg-transparent py-5"
+      }`}
     >
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0.75rem 1rem",
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-          <Tilt glareEnable glareColor="var(--color-accent)">
+      <nav className="container mx-auto px-4 md:px-8 flex justify-between items-center">
+        {/* Logo / Brand */}
+        <a
+          href="#"
+          className="flex items-center gap-3 group"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        >
+          <div className="relative">
             <img
               src={avatar}
               alt="Ashok Lama"
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: "50%",
-                border: "2px solid var(--color-accent)",
-              }}
+              className="w-10 h-10 rounded-full border-2 border-accent shadow-md group-hover:shadow-accent/50 transition-all duration-300"
             />
-          </Tilt>
-          <h1
-            style={{
-              color: "var(--color-accent)",
-              fontWeight: 600,
-              userSelect: "none",
-              margin: 0,
-              fontSize: isMobile ? "1rem" : "inherit",
-            }}
-          >
+            <div className="absolute inset-0 rounded-full bg-accent/20 animate-pulse group-hover:bg-accent/0"></div>
+          </div>
+          <h1 className="text-lg md:text-xl font-bold tracking-tight text-text group-hover:text-highlight transition-colors">
             Ashok Lama
           </h1>
+        </a>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex items-center gap-8">
+          {navLinks.map(({ href, label }) => (
+            <li key={href}>
+              <a
+                href={href}
+                className={`text-sm font-medium transition-all duration-200 hover:text-highlight relative py-1
+                  ${
+                    activeSection === href.slice(1)
+                      ? "text-highlight"
+                      : "text-muted"
+                  }
+                `}
+              >
+                {label}
+                <span
+                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-accent transform origin-left transition-transform duration-300 ${
+                    activeSection === href.slice(1)
+                      ? "scale-x-100"
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+          ))}
+          <li className="ml-4 pl-4 border-l border-white/10">
+            <ThemeSwitcher />
+          </li>
+        </ul>
+
+        {/* Mobile Menu Toggle */}
+        <div className="flex md:hidden items-center gap-4">
+          <ThemeSwitcher />
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-muted hover:text-highlight transition-colors focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
 
-        {isMobile ? (
-          <>
-            <button
-              onClick={toggleMobileMenu}
-              style={{
-                background: "none",
-                border: "none",
-                color: "var(--color-accent)",
-                fontSize: "1.5rem",
-                cursor: "pointer",
-              }}
-              aria-label="Toggle menu"
-            >
-              ☰
-            </button>
-
-            {isMobileMenuOpen && (
-              <div
-                style={{
-                  position: "fixed",
-                  top: "60px",
-                  left: 0,
-                  right: 0,
-                  backgroundColor: "var(--color-surface)",
-                  borderBottom: "1px solid var(--color-background)",
-                  padding: "1rem",
-                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <ul
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1rem",
-                    fontSize: "0.9rem",
-                    fontWeight: 500,
-                    listStyle: "none",
-                  }}
-                >
-                  {navLinks.map(({ href, label }) => (
-                    <li key={href}>
-                      <a
-                        href={href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        style={{
-                          color:
-                            activeSection === href.slice(1)
-                              ? "var(--color-accent)"
-                              : "var(--color-muted)",
-                          borderBottom:
-                            activeSection === href.slice(1)
-                              ? "2px solid var(--color-accent)"
-                              : "none",
-                          paddingBottom: "2px",
-                          display: "block",
-                        }}
-                        className="nav-link"
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </>
-        ) : (
-          <ul
-            style={{
-              display: "flex",
-              gap: "1.5rem",
-              fontSize: "0.9rem",
-              fontWeight: 500,
-              listStyle: "none",
-              alignItems: "center",
-            }}
-          >
-            {navLinks.map(({ href, label }) => (
-              <li key={href}>
-                <a
-                  href={href}
-                  style={{
-                    color:
-                      activeSection === href.slice(1)
-                        ? "var(--color-accent)"
-                        : "var(--color-muted)",
-                    borderBottom:
-                      activeSection === href.slice(1)
-                        ? "2px solid var(--color-accent)"
-                        : "none",
-                    paddingBottom: "2px",
-                  }}
-                  className="nav-link"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-            <ThemeSwitcher />
-          </ul>
+        {/* Mobile Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-surface/95 backdrop-blur-xl border-b border-white/5 shadow-2xl py-4 px-6 md:hidden">
+            <ul className="flex flex-col gap-4">
+              {navLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block text-lg font-medium py-2 border-b border-white/5
+                      ${
+                        activeSection === href.slice(1)
+                          ? "text-highlight pl-2"
+                          : "text-muted"
+                      }
+                      hover:text-highlight hover:pl-2 transition-all duration-200
+                    `}
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </nav>
     </header>

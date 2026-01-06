@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
 
 const projects = [
   {
@@ -149,386 +148,142 @@ const projects = [
   },
 ];
 
-const Projects: React.FC = () => {
-  return (
-    <section id="projects" style={{ margin: "0 auto" }}>
-      <h2 className="glow-accent" style={{ marginBottom: "2rem" }}>
-        Projects
-      </h2>
+const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    whileHover={{ y: -5 }}
+    className="group relative bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-300 flex flex-col h-full"
+  >
+    <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      <h3
-        style={{
-          marginTop: "2rem",
-          color: "var(--color-accent)",
-          borderBottom: "1px solid var(--color-accent)",
-          paddingBottom: "0.5rem",
-          textAlign: "center",
-        }}
-      >
-        Professional Work
-      </h3>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.2 } },
-          hidden: {},
-        }}
-        className="gridContainer"
-      >
-        {projects
-          .filter((p) => p.type === "professional")
-          .map(({ title, description, url, features, technologies, image }) => (
-            <Tilt
-              glareEnable
-              glareMaxOpacity={0.1}
-              glareColor="var(--color-accent)"
-              glarePosition="all"
-              scale={1.02}
+    <div className="p-6 flex flex-col h-full">
+      <div className="flex justify-between items-start mb-4">
+        <h3 className="text-xl font-bold text-text group-hover:text-accent transition-colors">
+          {project.title}
+        </h3>
+        {project.type === "package" && (
+          <span className="px-2 py-1 text-xs font-medium text-accent bg-accent/10 rounded-md border border-accent/20">
+            {project.version || "NPM"}
+          </span>
+        )}
+      </div>
+
+      <p className="text-muted text-sm mb-6 leading-relaxed flex-grow">
+        {project.description}
+      </p>
+
+      {project.features && (
+        <div className="mb-6">
+          <h4 className="text-xs uppercase tracking-wider text-muted/80 font-semibold mb-3">
+            Key Features
+          </h4>
+          <ul className="space-y-1">
+            {project.features.slice(0, 3).map((feature, i) => (
+              <li
+                key={i}
+                className="text-sm text-text/80 flex items-start gap-2"
+              >
+                <span className="text-accent mt-1">▹</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div className="mt-auto">
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.technologies.map((tech, i) => (
+            <span
+              key={i}
+              className="px-2.5 py-1 text-xs font-medium text-text/90 bg-white/5 rounded-full border border-white/10"
             >
-              <motion.div
-                key={title}
-                variants={{
-                  visible: { opacity: 1, y: 0 },
-                  hidden: { opacity: 0, y: 30 },
-                }}
-                style={{
-                  backgroundColor: "var(--color-surface)",
-                  padding: "1.5rem",
-                  borderRadius: "12px",
-                  boxShadow: "0 4px 20px rgba(var(--color-accent-rgb), 0.1)",
-                  color: "var(--color-text)",
-                  height: "calc(100% - 3rem)",
-                  position: "relative",
-                  zIndex: 1,
-                }}
-              >
-                {image && (
-                  <img
-                    src={image}
-                    alt={`${title} screenshot`}
-                    className="project-thumbnail"
-                  />
-                )}
-                <div
-                  style={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <h3
-                    style={{
-                      marginBottom: "0.75rem",
-                      fontSize: "1.25rem",
-                      color: "var(--color-accent)",
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <span>{title}</span>
-
-                    {image && (
-                      <img
-                        src={image}
-                        alt={`${title} screenshot`}
-                        className="project-thumbnail-pill"
-                      />
-                    )}
-                  </h3>
-
-                  <p
-                    style={{
-                      fontSize: "0.95rem",
-                      color: "var(--color-muted)",
-                      marginBottom: "1rem",
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    {description}
-                  </p>
-
-                  {features && (
-                    <div style={{ marginBottom: "1rem" }}>
-                      <h4
-                        style={{
-                          fontSize: "0.9rem",
-                          marginBottom: "0.5rem",
-                          color: "var(--color-accent)",
-                        }}
-                      >
-                        Features:
-                      </h4>
-                      <ul
-                        style={{
-                          fontSize: "0.85rem",
-                          paddingLeft: "1.25rem",
-                          margin: 0,
-                          lineHeight: 1.6,
-                          color: "var(--color-muted)",
-                        }}
-                      >
-                        {features.map((feature, i) => (
-                          <li key={i}>{feature}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {technologies && (
-                    <div style={{ marginTop: "auto" }}>
-                      <h4
-                        style={{
-                          fontSize: "0.9rem",
-                          marginBottom: "0.5rem",
-                          color: "var(--color-accent)",
-                        }}
-                      >
-                        Technologies:
-                      </h4>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexWrap: "wrap",
-                          gap: "0.5rem",
-                        }}
-                      >
-                        {technologies.map((tech, i) => (
-                          <span
-                            key={i}
-                            style={{
-                              fontSize: "0.75rem",
-                              color: "var(--color-accent)",
-                              background: "rgba(var(--color-accent-rgb), 0.1)",
-                              padding: "0.25rem 0.5rem",
-                              borderRadius: "4px",
-                            }}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {url && (
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        display: "inline-block",
-                        marginTop: "1rem",
-                        fontSize: "0.85rem",
-                        color: "var(--color-accent)",
-                        textDecoration: "none",
-                        fontWeight: 500,
-                        width: "fit-content",
-                        padding: "0.5rem 1rem",
-                        border: "1px solid",
-                        borderRadius: "8px",
-                      }}
-                    >
-                      View Project →
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            </Tilt>
+              {tech}
+            </span>
           ))}
-      </motion.div>
+        </div>
 
-      <h3
-        style={{
-          marginTop: "3rem",
-          color: "var(--color-accent)",
-          borderBottom: "1px solid var(--color-accent)",
-          paddingBottom: "0.5rem",
-          textAlign: "center",
-        }}
-      >
-        Open Source Packages
-      </h3>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.2 } },
-          hidden: {},
-        }}
-        className="gridContainer"
-      >
-        {projects
-          .filter((p) => p.type === "package")
-          .map(
-            ({ title, description, url, version, features, technologies }) => (
-              <Tilt
-                glareEnable
-                glareMaxOpacity={0.05}
-                glareColor="var(--color-accent)"
-                glarePosition="all"
-                scale={1.01}
-              >
-                <motion.div
-                  key={title}
-                  variants={{
-                    visible: { opacity: 1, y: 0 },
-                    hidden: { opacity: 0, y: 30 },
-                  }}
-                  style={{
-                    backgroundColor: "var(--color-surface)",
-                    padding: "1.5rem",
-                    borderRadius: "12px",
-                    boxShadow: "0 4px 15px rgba(var(--color-accent-rgb), 0.05)",
-                    color: "var(--color-text)",
-                    height: "calc(100% - 3rem)",
-                  }}
-                >
-                  <div
-                    style={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "flex-start",
-                        marginBottom: "0.75rem",
-                      }}
-                    >
-                      <h3
-                        style={{
-                          fontSize: "1.2rem",
-                          color: "var(--color-accent)",
-                          margin: 0,
-                        }}
-                      >
-                        {title}
-                      </h3>
-                      {version && (
-                        <span
-                          style={{
-                            fontSize: "0.75rem",
-                            color: "var(--color-accent)",
-                            background: "rgba(var(--color-accent-rgb), 0.1)",
-                            padding: "0.25rem 0.5rem",
-                            borderRadius: "4px",
-                            fontWeight: 500,
-                          }}
-                        >
-                          {version}
-                        </span>
-                      )}
-                    </div>
+        {project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm font-medium text-accent hover:text-highlight transition-colors group/link"
+          >
+            {project.type === "package" ? "View Package" : "View Project"}
+            <svg
+              className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </motion.div>
+);
 
-                    <p
-                      style={{
-                        fontSize: "0.9rem",
-                        color: "var(--color-muted)",
-                        marginBottom: "1rem",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {description}
-                    </p>
+const Projects: React.FC = () => {
+  const professionalProjects = projects.filter(
+    (p) => p.type === "professional"
+  );
+  const openSourceProjects = projects.filter((p) => p.type === "package");
 
-                    {features && (
-                      <div style={{ marginBottom: "1rem" }}>
-                        <h4
-                          style={{
-                            fontSize: "0.85rem",
-                            marginBottom: "0.5rem",
-                            color: "var(--color-accent)",
-                          }}
-                        >
-                          Features:
-                        </h4>
-                        <ul
-                          style={{
-                            fontSize: "0.8rem",
-                            paddingLeft: "1.1rem",
-                            margin: 0,
-                            lineHeight: 1.6,
-                            color: "var(--color-muted)",
-                          }}
-                        >
-                          {features.slice(0, 3).map((feature, i) => (
-                            <li key={i}>{feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+  return (
+    <section id="projects" className="py-20">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+            Featured Work
+          </h2>
+          <p className="text-muted max-w-2xl mx-auto">
+            A collection of professional projects and open-source contributions.
+          </p>
+        </motion.div>
 
-                    {technologies && (
-                      <div style={{ marginTop: "auto" }}>
-                        <h4
-                          style={{
-                            fontSize: "0.85rem",
-                            marginBottom: "0.5rem",
-                            color: "var(--color-accent)",
-                          }}
-                        >
-                          Technologies:
-                        </h4>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: "0.4rem",
-                          }}
-                        >
-                          {technologies.map((tech, i) => (
-                            <span
-                              key={i}
-                              style={{
-                                fontSize: "0.7rem",
-                                color: "var(--color-accent)",
-                                background:
-                                  "rgba(var(--color-accent-rgb), 0.1)",
-                                padding: "0.2rem 0.4rem",
-                                borderRadius: "4px",
-                              }}
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-8">
+            <h3 className="text-2xl font-bold text-text">
+              Professional Projects
+            </h3>
+            <div className="h-px bg-white/10 flex-grow"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {professionalProjects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
+        </div>
 
-                    {url && (
-                      <a
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "inline-block",
-                          marginTop: "1rem",
-                          fontSize: "0.8rem",
-                          color: "var(--color-accent)",
-                          textDecoration: "none",
-                          fontWeight: 500,
-                          width: "fit-content",
-                          padding: "0.5rem 1rem",
-                          border: "1px solid",
-                          borderRadius: "8px",
-                        }}
-                      >
-                        View Package →
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              </Tilt>
-            )
-          )}
-      </motion.div>
+        <div>
+          <div className="flex items-center gap-4 mb-8">
+            <h3 className="text-2xl font-bold text-text">
+              Open Source & Packages
+            </h3>
+            <div className="h-px bg-white/10 flex-grow"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {openSourceProjects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

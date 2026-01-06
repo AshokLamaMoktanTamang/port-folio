@@ -1,13 +1,21 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import Tilt from "react-parallax-tilt";
 import { skillIcons, categoryIcons } from "./icons";
 
 const skillSections = [
   {
     title: "Programming Languages",
     iconKey: "Programming Languages",
-    items: ["JavaScript", "TypeScript", "SQL", "HTML", "CSS", "C#", "Java", "Python"],
+    items: [
+      "JavaScript",
+      "TypeScript",
+      "SQL",
+      "HTML",
+      "CSS",
+      "C#",
+      "Java",
+      "Python",
+    ],
   },
   {
     title: "Frontend Technologies",
@@ -61,9 +69,9 @@ const skillSections = [
     items: ["MySQL", "MongoDB", "PostgreSQL"],
   },
   {
-    title: "Tools and Technologies",
+    title: "Tools & Technologies",
     iconKey: "Tools",
-    items: ["Git", "Postman", "Figma", "Docker", "Linux", "Redis"],
+    items: ["Postman", "Figma", "Docker", "Linux", "Redis"],
   },
   {
     title: "Operating Systems",
@@ -71,7 +79,7 @@ const skillSections = [
     items: ["Windows", "Linux", "MacOS"],
   },
   {
-    title: "Testing and QA",
+    title: "Testing & QA",
     iconKey: "Testing",
     items: ["Jest", "Cypress", "K6", "Lighthouse"],
   },
@@ -84,133 +92,72 @@ const skillSections = [
 
 const containerVariants = {
   visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.05 },
   },
   hidden: {},
 };
 
-const sectionVariants: Variants = {
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 100 },
-  },
+const itemVariants: Variants = {
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   hidden: { opacity: 0, y: 20 },
-};
-
-const skillVariants: Variants = {
-  hover: {
-    scale: 1.05,
-    boxShadow: "0 0 15px var(--color-accent)",
-    y: -3,
-    transition: { type: "spring", stiffness: 400, damping: 10 },
-  },
-  rest: { scale: 1 },
 };
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" style={{ margin: "0 auto" }}>
-      <h2 className="glow-accent" style={{ marginBottom: "2rem" }}>
-        Skills
-      </h2>
+    <section id="skills" className="py-20 relative">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+            Technical Proficiency
+          </h2>
+          <p className="text-muted max-w-2xl mx-auto">
+            A comprehensive overview of my technical skills and tools.
+          </p>
+        </motion.div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-          gap: "2rem",
-        }}
-      >
-        {skillSections.map(({ title, items, iconKey }) => (
-          <motion.div
-            key={title}
-            variants={sectionVariants}
-            style={{
-              padding: "1.5rem",
-              borderRadius: "16px",
-              background: "var(--color-surface)",
-              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(5px)",
-            }}
-            whileHover={{ y: -5 }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.8rem",
-                marginBottom: "1.5rem",
-              }}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {skillSections.map(({ title, items, iconKey }) => (
+            <motion.div
+              key={title}
+              variants={itemVariants}
+              className="bg-surface/50 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-accent/30 transition-colors duration-300 flex flex-col h-full"
             >
-              <span style={{ fontSize: "1.8rem", color: "var(--color-accent)" }}>
-                {categoryIcons[iconKey] || "🛠️"}
-              </span>
-              <h3
-                style={{
-                  margin: 0,
-                  fontSize: "1.3rem",
-                  fontWeight: 600,
-                  color: "var(--color-accent)",
-                }}
-              >
-                {title}
-              </h3>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "0.8rem",
-              }}
-            >
-              {items.map((skill) => (
-                <Tilt
-                  key={skill}
-                  glareEnable
-                  glareColor="var(--color-accent)"
-                  glareMaxOpacity={0.2}
-                  glarePosition="all"
-                  scale={1.02}
-                  transitionSpeed={2000}
-                  tiltMaxAngleX={5}
-                  tiltMaxAngleY={5}
-                >
-                  <motion.div
-                    variants={skillVariants}
-                    initial="rest"
-                    whileHover="hover"
-                    style={{
-                      backgroundColor: "var(--color-background)",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "50px",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                      textAlign: "center",
-                      userSelect: "none",
-                      cursor: "default",
-                      fontWeight: 500,
-                      color: "var(--color-text)",
-                      fontSize: "0.9rem",
-                      whiteSpace: "nowrap",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
-                      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-                    }}
-                  >
-                    {skillIcons[skill] || "🔧"} <span>{skill}</span>
-                  </motion.div>
-                </Tilt>
-              ))}
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+              <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+                <span className="text-2xl text-accent bg-accent/10 p-2 rounded-lg">
+                  {categoryIcons[iconKey] || "🛠️"}
+                </span>
+                <h3 className="text-lg font-semibold text-text/90">{title}</h3>
+              </div>
+
+              <div className="flex flex-wrap gap-2 content-start">
+                {items.map((skill) => (
+                  <div key={skill} className="group">
+                    <div className="bg-surface hover:bg-accent/10 hover:text-highlight border border-white/5 hover:border-accent/30 px-3 py-1.5 rounded-lg flex items-center gap-2 transition-all duration-200 cursor-default">
+                      <span className="text-muted group-hover:text-accent transition-colors">
+                        {skillIcons[skill] || "🔧"}
+                      </span>
+                      <span className="text-sm font-medium text-muted group-hover:text-highlight">
+                        {skill}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 };

@@ -24,7 +24,7 @@ const experiences = [
     period: "06/2023 - 07/2024",
     details: [
       "Designed and implemented a microservices architecture for the application, enabling scalable and modular development.",
-      "Designed a Proof of Concept (PoC) for generating thumbnail sprites using Python and ffmpeg, optimizing video preview generation.",
+      "God a Proof of Concept (PoC) for generating thumbnail sprites using Python and ffmpeg, optimizing video preview generation.",
       "Led the development of the admin panel of My Second Teacher V2, enhancing user experience and system efficiency.",
       "Built a custom video player package with quiz annotations using React, improving interactive learning experiences.",
       "Established internal communication using gRPC, ensuring high-performance, low-latency interactions between services.",
@@ -62,61 +62,65 @@ const experiences = [
 
 const Experience: React.FC = () => {
   return (
-    <section id="experience">
-      <h2 className="glow-accent">Work Experience</h2>
-      <motion.ul
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.3 } },
-          hidden: {},
-        }}
-        style={{ paddingLeft: 0 }}
-      >
-        {experiences.map(({ role, company, location, period, details }) => (
-          <motion.li
-            key={`${role}-${period}`}
-            variants={{
-              visible: { opacity: 1, y: 0 },
-              hidden: { opacity: 0, y: 40 },
-            }}
-            style={{
-              marginBottom: 24,
-              backgroundColor: "var(--color-surface)",
-              padding: "1rem 1.25rem",
-              borderRadius: 10,
-              border: "1px solid var(--color-accent)",
-            }}
-          >
-            <h3 className="glow-accent" style={{ marginBottom: 4 }}>
-              {role}
-            </h3>
-            <p
-              style={{
-                fontWeight: 600,
-                color: "var(--color-accent)",
-                marginBottom: 6,
-              }}
-            >
-              {company} — {location} &middot; {period}
-            </p>
-            <ul
-              style={{
-                margin: 0,
-                paddingLeft: "1.25rem",
-                color: "var(--color-muted)",
-              }}
-            >
-              {details.map((item, idx) => (
-                <li key={idx} style={{ marginBottom: 16 }}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.li>
-        ))}
-      </motion.ul>
+    <section id="experience" className="py-20 relative">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+            Work Experience
+          </h2>
+          <p className="text-muted">
+            My professional journey and track record.
+          </p>
+        </motion.div>
+
+        <div className="relative border-l-2 border-white/10 ml-3 md:ml-6 space-y-12">
+          {experiences.map(
+            ({ role, company, location, period, details }, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative pl-8 md:pl-12"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-accent shadow-[0_0_10px_rgba(14,165,233,0.5)]"></div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-text">{role}</h3>
+                    <p className="text-accent font-medium">{company}</p>
+                  </div>
+                  <div className="text-sm font-medium text-muted mt-1 sm:mt-0 text-right">
+                    <p>{period}</p>
+                    <p>{location}</p>
+                  </div>
+                </div>
+
+                <div className="bg-surface/50 rounded-xl p-6 border border-white/5 hover:border-white/10 transition-colors">
+                  <ul className="space-y-3">
+                    {details.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-3 text-text/80 text-sm leading-relaxed"
+                      >
+                        <span className="text-accent mt-1.5 text-xs">●</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            )
+          )}
+        </div>
+      </div>
     </section>
   );
 };

@@ -2,18 +2,8 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer
-      style={{
-        position: "relative",
-        marginTop: 60,
-        padding: "0 1rem",
-        backgroundColor: "var(--color-surface)",
-        color: "var(--color-muted)",
-        textAlign: "center",
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ position: "relative", zIndex: 1 }}>
+    <footer className="relative mt-16 px-4 bg-surface text-muted text-center overflow-hidden py-8">
+      <div className="relative z-10">
         <p>© {new Date().getFullYear()} Ashok Lama — Built with React & ❤️</p>
       </div>
     </footer>
