@@ -2,12 +2,11 @@ export interface Project {
     id: string;
     title: string;
     description: string;
-    longDescription?: string;
     technologies: string[];
-    image: string;
-    demoUrl?: string;
+    image?: string;
     githubUrl?: string;
-    featured?: boolean;
+    npmUrl?: string;
+    liveUrl?: string;
 }
 
 export interface Experience {
@@ -20,14 +19,17 @@ export interface Experience {
     achievements: string[];
 }
 
+export interface Education {
+    id: string;
+    institution: string;
+    degree: string;
+    location: string;
+    startDate: string;
+    endDate: string;
+    details?: string;
+}
+
 export interface Skill {
     category: string;
     items: string[];
-}
-
-export interface ContactFormData {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
 }

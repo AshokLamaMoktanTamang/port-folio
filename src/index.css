@@ -1,3 +1,11 @@
+:root {
+  --cv-bg: #0f172a;
+  --cv-text-primary: #f8fafc;
+  --cv-text-secondary: #94a3b8;
+  --cv-accent: #2dd4bf;
+  --cv-border: #334155;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,58 +16,110 @@
   }
 
   body {
-    @apply font-sans antialiased;
+    background-color: var(--cv-bg);
+    color: var(--cv-text-primary);
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-@layer utilities {
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
+@layer components {
+  .cv-bg-main {
+    background-color: var(--cv-bg);
   }
 
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .cv-bg-alt {
+    background-color: #0b1120;
+    /* Slightly darker than slate-900 */
   }
 
-  .animate-fade-in {
-    animation: fade-in 0.8s ease-out;
+  .cv-accent-text {
+    @apply text-teal-400;
   }
 
-  .animate-slide-up {
-    animation: slide-up 0.8s ease-out;
+  .cv-accent-border {
+    @apply border-teal-500/30;
   }
 
-  .animation-delay-200 {
-    animation-delay: 0.2s;
-    animation-fill-mode: backwards;
+  .cv-section-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--cv-text-primary);
   }
 
-  .animation-delay-400 {
-    animation-delay: 0.4s;
-    animation-fill-mode: backwards;
+  .cv-divider {
+    height: 1px;
+    background-color: var(--cv-border);
+    width: 100%;
+    margin-bottom: 1.5rem;
   }
 
-  .animation-delay-600 {
-    animation-delay: 0.6s;
-    animation-fill-mode: backwards;
+  .cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
   }
 
-  .animation-delay-800 {
-    animation-delay: 0.8s;
-    animation-fill-mode: backwards;
+  .cv-item-company {
+    font-weight: 700;
+    color: #f1f5f9;
+    text-transform: uppercase;
   }
+
+  .cv-item-location {
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+
+  .cv-item-role {
+    font-style: italic;
+    font-weight: 500;
+    color: #cbd5e1;
+  }
+
+  .cv-item-date {
+    font-weight: 700;
+    color: #f1f5f9;
+  }
+
+  .cv-bullet {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    color: #94a3b8;
+    line-height: 1.625;
+  }
+
+  .cv-bullet::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #64748b;
+  }
+
+  .cv-skills-category {
+    font-weight: 700;
+    color: #e2e8f0;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .cv-skills-list {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.selection\:bg-teal-500\/30 ::selection {
+  background-color: rgba(45, 212, 191, 0.3);
 }
