@@ -10,15 +10,12 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-      {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/90 backdrop-blur-sm"
+        className="absolute inset-0 cv-bg-alt/50 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Modal Container */}
       <div className="relative w-full max-w-5xl h-[90vh] bg-[#0f172a] rounded-xl shadow-2xl border border-slate-800 flex flex-col overflow-hidden animate-fade-in">
-        {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-slate-800 bg-[#1e293b]/50">
           <div className="flex items-center gap-3">
             <h3 className="text-white font-bold tracking-wider uppercase text-sm">
@@ -46,10 +43,9 @@ const CVViewer = ({ isOpen, onClose }: CVViewerProps) => {
           </div>
         </div>
 
-        {/* Content */}
         <div className="flex-1 bg-[#0f172a] p-2 md:p-4">
           <iframe
-            src="/Ashok_Lama.pdf#toolbar=0"
+            src="/Ashok_Lama.pdf#toolbar=0&zoom=page-fit&page=1"
             className="w-full h-full rounded shadow-inner bg-slate-900"
             title="CV Viewer"
           />

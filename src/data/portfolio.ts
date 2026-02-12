@@ -223,8 +223,8 @@ export const personalInfo = {
     location: 'Boudha, Kathmandu',
     email: 'moktashok@gmail.com',
     phone: '(+977) 9840708606',
-    linkedin: 'https://linkedin.com/in/ashok-lama',
-    github: 'https://github.com/ashok-lama',
+    linkedin: 'https://www.linkedin.com/in/ashok-lama-620547282/',
+    github: 'https://github.com/AshokLamaMoktanTamang',
     npm: 'https://www.npmjs.com/~ashoklama',
     summary: 'Passionate software engineer with over three years of experience in full-stack development, dedicated to creating exceptional digital experiences. Skilled in maintaining web applications, architecting scalable systems, and ensuring code quality. Proven ability to deliver innovative solutions tailored to individual needs.',
 };
