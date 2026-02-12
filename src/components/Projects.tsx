@@ -4,65 +4,65 @@ import { Project } from "../types";
 
 const ProjectItem = ({ project }: { project: Project }) => (
   <div className="cv-item group">
-    <div className="cv-item-header mb-2 relative">
-      <div className="flex flex-col">
-        <h3 className="cv-item-company text-teal-400 group-hover:text-teal-300 transition-colors">
+    <div className="mb-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-2">
+        <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-teal-400 transition-colors tracking-tight uppercase">
           {project.title}
         </h3>
-        <div className="flex flex-wrap gap-2 mt-1">
-          {project.technologies.map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-0.5 bg-slate-800 text-slate-400 text-[9px] uppercase tracking-wider rounded border border-slate-700"
+        <div className="flex items-center gap-4 text-slate-500">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+              className="hover:text-teal-400 transition-colors"
             >
-              {tech}
-            </span>
-          ))}
+              <Github size={18} />
+            </a>
+          )}
+          {project.npmUrl && (
+            <a
+              href={project.npmUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="NPM"
+              className="hover:text-teal-400 transition-colors"
+            >
+              <Package size={18} />
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Live App"
+              className="hover:text-teal-400 transition-colors"
+            >
+              <ExternalLink size={18} />
+            </a>
+          )}
         </div>
       </div>
 
-      <div className="flex gap-3 text-slate-400 mt-1">
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="GitHub"
-            className="hover:text-teal-400 transition-colors"
+      <div className="flex flex-wrap gap-2">
+        {project.technologies.map((tech) => (
+          <span
+            key={tech}
+            className="px-2 py-0.5 bg-slate-800/50 text-slate-400 text-[9px] font-bold uppercase tracking-widest rounded border border-slate-700/50"
           >
-            <Github size={18} />
-          </a>
-        )}
-        {project.npmUrl && (
-          <a
-            href={project.npmUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="NPM"
-            className="hover:text-teal-400 transition-colors"
-          >
-            <Package size={18} />
-          </a>
-        )}
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Live App"
-            className="hover:text-teal-400 transition-colors"
-          >
-            <ExternalLink size={18} />
-          </a>
-        )}
+            {tech}
+          </span>
+        ))}
       </div>
     </div>
 
-    <ul className="space-y-2">
-      <li className="cv-bullet text-slate-300 text-sm italic md:not-italic">
+    <div className="pl-0 border-l-2 border-transparent group-hover:border-teal-500/20 transition-all">
+      <p className="text-slate-400 text-sm leading-relaxed italic md:not-italic font-medium">
         {project.description}
-      </li>
-    </ul>
+      </p>
+    </div>
   </div>
 );
 

@@ -17,8 +17,8 @@ function App() {
         <About />
         <Education />
         <Experience />
-        <Skills />
         <ProfessionalDevelopment />
+        <Skills />
         <Projects />
       </main>
       <Footer />

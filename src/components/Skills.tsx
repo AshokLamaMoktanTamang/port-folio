@@ -31,38 +31,38 @@ const CategoryIcon = ({ category }: { category: string }) => {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 cv-bg-main">
+    <section id="skills" className="py-16 cv-bg-main relative">
       <div className="max-w-4xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="p-2 bg-slate-800 rounded-lg">
+        <div className="flex items-center gap-3 mb-10">
+          <div className="p-2 bg-slate-800 rounded-lg shadow-inner">
             <Code2 size={24} className="text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-white tracking-tight uppercase">
+          <h2 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight uppercase">
             Skills
           </h2>
         </div>
 
-        <div className="space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 gap-x-12">
           {skills.map((skillGroup) => (
-            <div key={skillGroup.category} className="space-y-6">
+            <div key={skillGroup.category} className="space-y-5">
               {/* Category Bullet */}
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-slate-300 rounded-full"></span>
-                <h3 className="text-xs font-bold text-slate-300 uppercase tracking-[0.2em]">
+              <div className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 bg-teal-500 rounded-full shadow-[0_0_8px_rgba(20,184,166,0.5)]"></span>
+                <h3 className="text-[11px] font-black text-slate-300 uppercase tracking-[0.25em]">
                   {skillGroup.category}
                 </h3>
               </div>
 
               {/* Skill Pills */}
-              <div className="flex flex-wrap gap-x-3 gap-y-4 ml-3">
+              <div className="flex flex-wrap gap-2 md:gap-3 pl-1">
                 {skillGroup.items.map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-2.5 px-3 py-1.5 bg-[#1e293b]/40 backdrop-blur-sm border border-slate-700/50 rounded-full hover:border-teal-500/50 hover:bg-[#1e293b]/60 transition-all cursor-default group shadow-sm"
+                    className="flex items-center gap-2 px-3 py-1.5 bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 rounded-full hover:border-teal-500/50 hover:bg-slate-800/60 transition-all cursor-default group shadow-sm"
                   >
                     <CategoryIcon category={skillGroup.category} />
-                    <span className="text-[11px] font-semibold text-slate-200 group-hover:text-white">
+                    <span className="text-[10px] md:text-[11px] font-bold text-slate-300 group-hover:text-white tracking-wide">
                       {item}
                     </span>
                   </div>

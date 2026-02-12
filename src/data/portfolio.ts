@@ -197,7 +197,7 @@ export const skills: Skill[] = [
     },
     {
         category: "OTHER",
-        items: ["Stripe", "PayPal", "Kafka", "ClamAV"]
+        items: ["Stripe", "PayPal", "Kafka"]
     }
 ];
 

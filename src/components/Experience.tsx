@@ -13,20 +13,26 @@ const Experience = () => {
         <div className="space-y-12">
           {experiences.map((exp) => (
             <div key={exp.id} className="cv-item group">
-              <div className="cv-item-header mb-1">
-                <h3 className="cv-item-company text-teal-400 group-hover:text-teal-300 transition-colors">
+              <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-1 mb-1">
+                <h3 className="text-lg font-black text-white group-hover:text-teal-400 transition-colors uppercase tracking-tight">
                   {exp.company}
                 </h3>
-                <span className="cv-item-location">{exp.location}</span>
+                <span className="text-xs font-bold text-slate-400 md:text-white uppercase tracking-wider">
+                  {exp.location}
+                </span>
               </div>
-              <div className="cv-item-header mb-3">
-                <h4 className="cv-item-role">{exp.position}</h4>
-                <span className="cv-item-date">{exp.startDate} — Ongoing</span>
+              <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-4">
+                <h4 className="text-sm font-bold text-teal-500/90 italic">
+                  {exp.position}
+                </h4>
+                <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
+                  {exp.startDate} — Ongoing
+                </span>
               </div>
 
-              <ul className="space-y-1.5">
+              <ul className="space-y-2.5">
                 {exp.achievements.map((achievement, i) => (
-                  <li key={i} className="cv-bullet">
+                  <li key={i} className="cv-bullet text-sm leading-relaxed">
                     {achievement}
                   </li>
                 ))}

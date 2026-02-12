@@ -13,20 +13,26 @@ const ProfessionalDevelopment = () => {
         <div className="space-y-12">
           {professionalDevelopment.map((item, idx) => (
             <div key={idx} className="cv-item">
-              <div className="cv-item-header mb-1">
-                <h3 className="cv-item-company text-teal-400">{item.title}</h3>
-                <span className="cv-item-date">
+              <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-1 mb-1">
+                <h3 className="text-lg font-black text-teal-400 uppercase tracking-tight">
+                  {item.title}
+                </h3>
+                <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
                   {item.startDate} — {item.endDate}
                 </span>
               </div>
-              <div className="cv-item-header mb-3">
-                <h4 className="cv-item-role">{item.company}</h4>
-                <span className="cv-item-location">{item.location}</span>
+              <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 mb-4">
+                <h4 className="text-sm font-bold text-slate-200 uppercase tracking-wider">
+                  {item.company}
+                </h4>
+                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  {item.location}
+                </span>
               </div>
 
-              <ul className="space-y-1.5">
+              <ul className="space-y-2.5">
                 {item.achievements.map((achievement, i) => (
-                  <li key={i} className="cv-bullet">
+                  <li key={i} className="cv-bullet text-sm leading-relaxed">
                     {achievement}
                   </li>
                 ))}
