@@ -1,145 +1,122 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { Code, Database, Server, Wrench, Brain, TestTube } from "lucide-react";
+import { skills, personalInfo } from "../data/portfolio";
 
-const profileData = {
-  name: "Ashok Lama",
-  contact: {
-    location: "Boudha, Kathmandu",
-    email: "moktashok@gmail.com",
-    phone: "(+977) 9840708606",
-    linkedin: "https://www.linkedin.com/in/ashok-lama-620547282/",
-    github: "https://github.com/AshokLamaMoktanTamang",
-  },
-  careerObjective: `Passionate software engineer with over three years of experience in full-stack development. Dedicated to creating exceptional digital experiences by architecting scalable systems and ensuring code quality. Proven track record of delivering innovative solutions tailored to user needs.`,
-  education: [
-    {
-      degree: "BSc (Hons) Computing",
-      period: "2021-2023",
-      institute: "Islington College, Kathmandu",
-      affiliation: "London Metropolitan University",
-    },
-    {
-      degree: "SLC",
-      period: "2018-2020",
-      institute: "Trinity International College, Kathmandu",
-    },
-  ],
+const iconMap: Record<string, React.ReactNode> = {
+  "Frontend Technologies": <Code size={24} />,
+  "Backend Technologies": <Server size={24} />,
+  Databases: <Database size={24} />,
+  "AI/ML & Tools": <Brain size={24} />,
+  "DevOps & Tools": <Wrench size={24} />,
+  "Testing & Quality": <TestTube size={24} />,
 };
 
-const About: React.FC = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
-
+const About = () => {
   return (
-    <section id="about" ref={ref} className="py-20 relative">
-      <div className="container mx-auto px-6 max-w-5xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-surface/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/5 shadow-2xl"
-          style={{ y }}
-        >
-          <div className="flex flex-col md:flex-row gap-12">
-            {/* Left Column: Personal Info */}
-            <div className="md:w-1/3 border-b md:border-b-0 md:border-r border-white/10 pb-8 md:pb-0 md:pr-8">
-              <h2 className="text-3xl font-bold text-text mb-2">
-                {profileData.name}
-              </h2>
-              <div className="h-1 w-20 bg-accent rounded-full mb-6"></div>
+    <section id="about" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            About Me
+          </h2>
+          <div className="w-20 h-1 bg-teal-600 mx-auto rounded-full"></div>
+        </div>
 
-              <div className="space-y-4 text-muted text-sm">
-                <div className="flex items-center gap-3">
-                  <span className="p-2 bg-surface rounded-lg text-accent">
-                    📍
-                  </span>
-                  <span>{profileData.contact.location}</span>
-                </div>
-                <a
-                  href={`mailto:${profileData.contact.email}`}
-                  className="flex items-center gap-3 hover:text-accent transition-colors"
-                >
-                  <span className="p-2 bg-surface rounded-lg text-accent">
-                    ✉️
-                  </span>
-                  <span>{profileData.contact.email}</span>
-                </a>
-                <div className="flex items-center gap-3">
-                  <span className="p-2 bg-surface rounded-lg text-accent">
-                    📱
-                  </span>
-                  <span>{profileData.contact.phone}</span>
-                </div>
-              </div>
+        <div className="grid md:grid-cols-2 gap-12 mb-20">
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-slate-800 mb-4">
+              Professional Background
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              {personalInfo.summary}
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              With a strong foundation in both frontend and backend
+              technologies, I specialize in building scalable web applications
+              using modern frameworks and tools. My experience spans from
+              creating interactive user interfaces to architecting microservices
+              and implementing AI-powered features.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              I'm passionate about mentoring junior developers and have
+              successfully supervised multiple interns through the Work-Related
+              Learning program, helping them grow into confident developers.
+            </p>
+          </div>
 
-              <div className="flex gap-4 mt-8">
-                <a
-                  href={profileData.contact.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-3 bg-surface rounded-xl text-muted hover:text-white hover:bg-accent transition-all shadow-md"
-                >
-                  <span className="sr-only">LinkedIn</span>
-                  LinkedIn
-                </a>
-                <a
-                  href={profileData.contact.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="p-3 bg-surface rounded-xl text-muted hover:text-white hover:bg-surface/80 transition-all shadow-md"
-                >
-                  <span className="sr-only">GitHub</span>
-                  GitHub
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Bio & Education */}
-            <div className="md:w-2/3">
-              <div className="mb-10">
-                <h3 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
-                  <span className="text-accent">01.</span> Career Objective
-                </h3>
-                <p className="text-text/80 leading-relaxed text-lg">
-                  {profileData.careerObjective}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-slate-800 mb-4">
+              What Drives Me
+            </h3>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-teal-600 rounded-full mt-2"></div>
+                <p className="text-slate-600">
+                  <strong className="text-slate-800">Innovation:</strong>{" "}
+                  Constantly exploring new technologies and methodologies to
+                  solve complex problems efficiently.
                 </p>
               </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-text mb-6 flex items-center gap-2">
-                  <span className="text-accent">02.</span> Education
-                </h3>
-                <div className="space-y-6">
-                  {profileData.education.map((edu, i) => (
-                    <div
-                      key={i}
-                      className="bg-surface/50 p-6 rounded-xl border border-white/5 hover:border-accent/30 transition-colors"
-                    >
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-bold text-text/90">{edu.degree}</h4>
-                        <span className="text-xs font-semibold bg-accent/10 text-accent px-2 py-1 rounded-md">
-                          {edu.period}
-                        </span>
-                      </div>
-                      <p className="text-muted text-sm mb-1">{edu.institute}</p>
-                      {edu.affiliation && (
-                        <p className="text-muted/70 text-xs italic">
-                          {edu.affiliation}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-teal-600 rounded-full mt-2"></div>
+                <p className="text-slate-600">
+                  <strong className="text-slate-800">Quality:</strong> Writing
+                  clean, maintainable code with comprehensive testing to ensure
+                  reliability.
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-teal-600 rounded-full mt-2"></div>
+                <p className="text-slate-600">
+                  <strong className="text-slate-800">Collaboration:</strong>{" "}
+                  Working closely with teams to deliver exceptional user
+                  experiences and mentor others.
+                </p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-2 h-2 bg-teal-600 rounded-full mt-2"></div>
+                <p className="text-slate-600">
+                  <strong className="text-slate-800">Learning:</strong> Staying
+                  current with industry trends and continuously expanding my
+                  skill set.
+                </p>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        <div>
+          <h3 className="text-3xl font-bold text-slate-800 mb-12 text-center">
+            Technical Skills
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {skills.map((skillGroup, index) => (
+              <div
+                key={skillGroup.category}
+                className="bg-slate-50 rounded-xl p-6 hover:shadow-lg transition-all hover:scale-105 border border-slate-200"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-teal-100 text-teal-600 rounded-lg">
+                    {iconMap[skillGroup.category]}
+                  </div>
+                  <h4 className="text-lg font-semibold text-slate-800">
+                    {skillGroup.category}
+                  </h4>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {skillGroup.items.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 bg-white text-slate-700 text-sm rounded-full border border-slate-200 hover:border-teal-300 hover:bg-teal-50 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

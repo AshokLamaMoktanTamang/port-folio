@@ -1,124 +1,142 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { Briefcase, MapPin, Calendar } from "lucide-react";
+import { experiences } from "../data/portfolio";
 
-const experiences = [
-  {
-    role: "Software Engineer",
-    company: "INNOVATE TECH",
-    location: "Baluwatar, Kathmandu",
-    period: "07/2024 - Ongoing",
-    details: [
-      "Supervised and contributed to the development of a scalable Quiz platform, Kung Fu Quiz, integrated to MST.",
-      "Engineered a real-time audio-to-text highlighting feature using OpenAI Whisper, improving accessibility for diverse user groups.",
-      "Built real-time features for an app using socket communication and implemented session services to track user sessions in MongoDB.",
-      "Worked closely with UI/UX designers using Figma to refine interfaces and enhance usability.",
-      "Utilized Docker for containerized deployments and Git for version control and CI/CD workflows.",
-      "Integrated Stripe and PayPal payment gateways into the application, handling both backend (Node.js, Express) and frontend (React) for secure and seamless transactions.",
-      "Implemented subscription management and webhook handling, ensuring reliability and fraud prevention.",
-    ],
-  },
-  {
-    role: "Associate Software Engineer",
-    company: "INNOVATE TECH",
-    location: "Baluwatar, Kathmandu",
-    period: "06/2023 - 07/2024",
-    details: [
-      "Designed and implemented a microservices architecture for the application, enabling scalable and modular development.",
-      "God a Proof of Concept (PoC) for generating thumbnail sprites using Python and ffmpeg, optimizing video preview generation.",
-      "Led the development of the admin panel of My Second Teacher V2, enhancing user experience and system efficiency.",
-      "Built a custom video player package with quiz annotations using React, improving interactive learning experiences.",
-      "Established internal communication using gRPC, ensuring high-performance, low-latency interactions between services.",
-      "Ensured mobile responsiveness for seamless user experience across devices.",
-      "Contributed to the development of a scalable bulk parser AWS Lambda function to process and upload multiple records efficiently using CSV files, streamlining data handling and enhancing system performance.",
-    ],
-  },
-  {
-    role: "Full-stack Developer Trainee",
-    company: "INNOVATE TECH",
-    location: "Baluwatar, Kathmandu",
-    period: "01/2023 - 06/2023",
-    details: [
-      "Worked on multiple React page views to facilitate efficient candidate management and streamline recruitment workflows.",
-      "Enhanced application control efficiency by developing multiple frontend admin projects.",
-      "Led the migration to Version 2 of the back-office (admin panel) using React Query, improving functionality and usability.",
-    ],
-  },
-  {
-    role: "Full-stack Developer Intern",
-    company: "INNOVATE TECH",
-    location: "Baluwatar, Kathmandu",
-    period: "09/2022 - 01/2023",
-    details: [
-      "Developed an internal hiring management system, implementing Single Sign-On (SSO) using Keycloak for seamless authentication across both frontend (React) and backend (Express, Node.js).",
-      "Worked on ING Hire, pdf viewer, Keycloak for authentication SSO, organization, department, level, interview management, Joi schema validation.",
-      "Used Express, Node, React, Redux Toolkit, Material UI, and TypeScript.",
-      "Handled file uploads with AWS S3 and multer.",
-      "Implemented Google OAuth 2.0 for interview date assignments with notifications; used OAuth 2 SMTP for mail send/receive.",
-      "Developed queue for notification system and used react-helmet-async for SEO optimization.",
-      "Optimized MongoDB schemas to enhance query performance and streamline workflows.",
-    ],
-  },
-];
-
-const Experience: React.FC = () => {
+const Experience = () => {
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="container mx-auto px-6 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+    <section id="experience" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Work Experience
           </h2>
-          <p className="text-muted">
-            My professional journey and track record.
+          <div className="w-20 h-1 bg-teal-600 mx-auto rounded-full"></div>
+          <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+            My professional journey in software engineering
           </p>
-        </motion.div>
+        </div>
 
-        <div className="relative border-l-2 border-white/10 ml-3 md:ml-6 space-y-12">
-          {experiences.map(
-            ({ role, company, location, period, details }, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative pl-8 md:pl-12"
+        <div className="relative">
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-teal-200"></div>
+
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <div
+                key={exp.id}
+                className={`relative flex items-center ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
               >
-                {/* Timeline Dot */}
-                <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-accent shadow-[0_0_10px_rgba(14,165,233,0.5)]"></div>
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-600 rounded-full border-4 border-white shadow-lg z-10"></div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-text">{role}</h3>
-                    <p className="text-accent font-medium">{company}</p>
-                  </div>
-                  <div className="text-sm font-medium text-muted mt-1 sm:mt-0 text-right">
-                    <p>{period}</p>
-                    <p>{location}</p>
+                <div
+                  className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
+                >
+                  <div className="bg-slate-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-teal-300">
+                    <div className="flex items-start gap-3 mb-4 md:hidden">
+                      <div className="p-2 bg-teal-100 text-teal-600 rounded-lg">
+                        <Briefcase size={20} />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-bold text-slate-900 mb-1">
+                          {exp.position}
+                        </h3>
+                        <p className="text-teal-600 font-semibold mb-2">
+                          {exp.company}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="hidden md:block mb-4">
+                      <h3 className="text-xl font-bold text-slate-900 mb-1">
+                        {exp.position}
+                      </h3>
+                      <p className="text-teal-600 font-semibold">
+                        {exp.company}
+                      </p>
+                    </div>
+
+                    <div
+                      className={`flex flex-wrap gap-3 mb-4 text-sm text-slate-600 ${index % 2 === 0 ? "md:justify-end" : ""}`}
+                    >
+                      <div className="flex items-center gap-1">
+                        <Calendar size={16} />
+                        <span>
+                          {exp.startDate} - {exp.endDate}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin size={16} />
+                        <span>{exp.location}</span>
+                      </div>
+                    </div>
+
+                    <ul
+                      className={`space-y-2 ${index % 2 === 0 ? "md:text-right" : ""}`}
+                    >
+                      {exp.achievements.map((achievement, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-slate-600 text-sm"
+                        >
+                          <span
+                            className={`text-teal-600 font-bold ${index % 2 === 0 ? "md:order-2" : ""}`}
+                          >
+                            •
+                          </span>
+                          <span className="flex-1">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                <div className="bg-surface/50 rounded-xl p-6 border border-white/5 hover:border-white/10 transition-colors">
-                  <ul className="space-y-3">
-                    {details.map((item, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-3 text-text/80 text-sm leading-relaxed"
-                      >
-                        <span className="text-accent mt-1.5 text-xs">●</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            )
-          )}
+                <div className="hidden md:block w-2/12"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl p-8 border border-teal-200">
+            <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              Professional Development
+            </h3>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-slate-700 font-semibold mb-2">
+                WRL Supervisor - Innovate Tech (July 2024 - November 2024)
+              </p>
+              <ul className="text-left space-y-2 text-slate-600">
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 font-bold">•</span>
+                  <span>
+                    Selected as supervisor for the Work-Related Learning module,
+                    overseen by Islington College
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 font-bold">•</span>
+                  <span>
+                    Led and mentored 4 front-end interns in modern web
+                    technologies including React, TypeScript, and Redux
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 font-bold">•</span>
+                  <span>
+                    Supervised development of HRM web application with 20+ core
+                    features
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-teal-600 font-bold">•</span>
+                  <span>
+                    Assisted 18 interns total, collaborating with other
+                    supervisors to support career growth
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,109 +1,65 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-text: var(--text);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-highlight: var(--highlight);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-  --font-family-display: 'Inter', system-ui, sans-serif;
-  --font-family-body: 'Inter', system-ui, sans-serif;
+  body {
+    @apply font-sans antialiased;
+  }
 }
 
-:root {
-  /* Default Dark Theme (Slate/Sky) */
-  --background: #020617;
-  /* Slate-950 */
-  --surface: #0f172a;
-  /* Slate-900 */
-  --text: #f8fafc;
-  /* Slate-50 */
-  --muted: #94a3b8;
-  /* Slate-400 */
-  --accent: #0ea5e9;
-  /* Sky-500 */
-  --highlight: #38bdf8;
-  /* Sky-400 */
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
 
-  --surface-rgb: 15, 23, 42;
-  --accent-rgb: 14, 165, 233;
+    to {
+      opacity: 1;
+    }
+  }
 
-  scroll-behavior: smooth;
-  color-scheme: dark;
-}
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
 
-:root.light {
-  /* Light Theme */
-  --background: #f8fafc;
-  /* Slate-50 */
-  --surface: #ffffff;
-  /* White */
-  --text: #0f172a;
-  /* Slate-900 */
-  --muted: #64748b;
-  /* Slate-500 */
-  --accent: #0284c7;
-  /* Sky-600 */
-  --highlight: #0ea5e9;
-  /* Sky-500 */
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-  --surface-rgb: 255, 255, 255;
-  --accent-rgb: 2, 132, 199;
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
 
-  color-scheme: light;
-}
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
 
-body {
-  margin: 0;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-family-body);
-  overflow-x: hidden;
-  transition: background-color 0.3s, color 0.3s;
-}
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+    animation-fill-mode: backwards;
+  }
 
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color 0.3s;
-}
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+    animation-fill-mode: backwards;
+  }
 
-a:hover {
-  color: var(--color-highlight);
-}
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+    animation-fill-mode: backwards;
+  }
 
-.glow-accent {
-  color: var(--color-text);
-  text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
-}
-
-section {
-  position: relative;
-  z-index: 10;
-  max-width: 80rem;
-  /* max-w-7xl */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem 1rem;
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-surface);
-  border-radius: 5px;
-  border: 1px solid var(--color-muted);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+    animation-fill-mode: backwards;
+  }
 }
