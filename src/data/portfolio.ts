@@ -3,7 +3,7 @@ import { Project, Experience, Skill, Education } from '../types';
 export const workProjects: Project[] = [
     {
         id: "wp0",
-        title: "AISA (Artiicial Intilligence School Assistant)",
+        title: "AISA (Artificial Intilligence School Assistant)",
         description: "An AI-powered intelligent subject assistant that allows teachers to select from multiple personas, each tailored to specific subjects. Teachers can generate lesson plans, group work, or quiz topic summaries, with content retrieved from embedded vectors and enhanced by AI tools that connect to the database. Users can interact with the system to query “MySecondTeacher” data, including assignments and other academic information, providing a smart, dynamic, and personalized teaching assistant experience.",
         technologies: ["Langgraph",
             "Langchain",

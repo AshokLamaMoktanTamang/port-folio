@@ -26,7 +26,7 @@ const Experience = () => {
                   {exp.position}
                 </h4>
                 <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
-                  {exp.startDate} — Ongoing
+                  {exp.startDate} — {exp.endDate}
                 </span>
               </div>
 

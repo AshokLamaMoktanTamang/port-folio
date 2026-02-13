@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ashok Lama - Portfolio</title>
+    <link>https://lamaashok.com.np</link>
+    <description>Full-stack software engineer specialized in building scalable web applications and AI-powered solutions.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Feb 2026 05:54:30 GMT</lastBuildDate>
+    <atom:link href="https://lamaashok.com.np/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AISA (Artificial Intilligence School Assistant)</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An AI-powered intelligent subject assistant that allows teachers to select from multiple personas, each tailored to specific subjects. Teachers can generate lesson plans, group work, or quiz topic summaries, with content retrieved from embedded vectors and enhanced by AI tools that connect to the database. Users can interact with the system to query “MySecondTeacher” data, including assignments and other academic information, providing a smart, dynamic, and personalized teaching assistant experience.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#aisa-(artificial-intilligence-school-assistant)</guid>
+    </item>
+    <item>
+      <title>Kung Fu Quiz</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An advanced quiz platform with real-time interaction features that provides real-time scoring and instant feedback, secure payment integration, dedicated rooms for quizzes, and support for multiple quiz modes to deliver a dynamic and engaging user experience.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#kung-fu-quiz</guid>
+    </item>
+    <item>
+      <title>My Second Teacher</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An award-winning e-learning platform offering interactive video lessons, eBooks, and academic support to students across 51 countries, serving as a comprehensive digital classroom that enhances learning through technology with interactive videos, integrated eBooks, classroom and test paper management, chat features, and dedicated portals for teachers, students, parents, and leaders.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#my-second-teacher</guid>
+    </item>
+    <item>
+      <title>Home School Asia</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>A scalable e-learning platform with comprehensive course management that includes interactive video classroom functionality, an interactive test and assessment system, secure session management, and detailed progress tracking and reporting to ensure an efficient and engaging learning experience.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#home-school-asia</guid>
+    </item>
+    <item>
+      <title>IVY Backoffice</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An advanced administration system for managing interactive video content that supports multi-language subtitle management, audio track configuration, an interactive element editor for quizzes, buttons, and annotations, content version control, and robust user permission management to streamline content operations efficiently.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#ivy-backoffice</guid>
+    </item>
+    <item>
+      <title>IVY Player</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An enterprise-grade interactive video player solution for educational platforms featuring a frame-accurate quiz and annotation system, multi-format video support with adaptive streaming, customizable player skin and branding options, and detailed analytics with advanced engagement tracking to deliver a powerful and flexible learning experience.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#ivy-player</guid>
+    </item>
+    <item>
+      <title>@ashoklama/statepilot</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>A modern state management solution for React applications that is type-safe by design, offers zero-boilerplate implementation, supports a modular state architecture, and provides scoped selectors and dispatchers for scalable and maintainable application development.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#@ashoklama/statepilot</guid>
+    </item>
+    <item>
+      <title>async-worker-queue-runner</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>A high-performance asynchronous task processing library that offers configurable concurrency control, automatic retry with exponential backoff, worker thread support for CPU-intensive tasks, and a clean promise-based API for building scalable and resilient systems.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#async-worker-queue-runner</guid>
+    </item>
+    <item>
+      <title>ashoklama-custom-video-player</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An extensible video player with enhanced capabilities that features customizable UI controls, a flexible plugin architecture, built-in accessibility support, and seamless cross-browser compatibility to ensure a powerful and inclusive viewing experience.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#ashoklama-custom-video-player</guid>
+    </item>
+    <item>
+      <title>Scribble</title>
+      <link>https://lamaashok.com.np/#projects</link>
+      <description>An interactive drawing application with rich features, including canvas-based rendering, multiple shape tools, layer support, and export functionality, providing a versatile and creative digital drawing experience.</description>
+      <pubDate>Fri, 13 Feb 2026 05:54:30 GMT</pubDate>
+      <guid>https://lamaashok.com.np/#scribble</guid>
+    </item>
+  </channel>
+</rss>
