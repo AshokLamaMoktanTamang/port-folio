@@ -7,6 +7,7 @@ import Skills from "./components/Skills";
 import ProfessionalDevelopment from "./components/ProfessionalDevelopment";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
+import FloatingBlogButton from "./components/FloatingBlogButton";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Projects />
       </main>
       <Footer />
+      <FloatingBlogButton />
     </div>
   );
 }

@@ -225,6 +225,7 @@ export const personalInfo = {
     phone: '(+977) 9840708606',
     linkedin: 'https://www.linkedin.com/in/ashok-lama-620547282/',
     github: 'https://github.com/AshokLamaMoktanTamang',
+    blogs: 'https://blogs.lamaashok.com.np',
     npm: 'https://www.npmjs.com/~ashoklama',
     summary: 'Passionate software engineer with over three years of experience in full-stack development, dedicated to creating exceptional digital experiences. Skilled in maintaining web applications, architecting scalable systems, and ensuring code quality. Proven ability to deliver innovative solutions tailored to individual needs.',
 };
